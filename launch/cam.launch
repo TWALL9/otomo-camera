@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+
+<launch>
+   <node name="otomo_camera" pkg="otomo-camera" type="cam"></node> 
+</launch>
