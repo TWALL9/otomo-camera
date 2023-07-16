@@ -19,19 +19,19 @@ def gather_img(_event):
         msg.data = frame.tobytes()
         image_pub.publish(msg)
     else:
-        print('image is empty')
-        
+        rospy.logerror('image is empty')
+
 
 if __name__ == '__main__':
     # setup camera and resolution
     cam = cv2.VideoCapture(-1)
     cam.set(cv2.CAP_PROP_FRAME_WIDTH, 320)
     cam.set(cv2.CAP_PROP_FRAME_HEIGHT, 240)
-    print('start sleep...')
+    rospy.loginfo('start sleep...')
     time.sleep(1.0)
-    print('start ros...')
+    rospy.loginfo('start ros...')
     rospy.init_node('otomo_camera')
-    timer = rospy.Timer(rospy.Duration(0, 33e6), gather_img)
-    print('go!')
+    timer = rospy.Timer(rospy.Duration(0.0666666), gather_img)
+    rospy.loginfo('go!')
     rospy.spin()
 
